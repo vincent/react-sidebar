@@ -215,6 +215,7 @@ class Sidebar extends React.Component {
     const sidebarStyle = {...defaultStyles.sidebar, ...this.props.styles.sidebar};
     const contentStyle = {...defaultStyles.content, ...this.props.styles.content};
     const overlayStyle = {...defaultStyles.overlay, ...this.props.styles.overlay};
+    const translate    = { min: this.props.minTranslate || 0, max: this.props.maxTranslate || 100 };
     const useTouch = this.state.dragSupported && this.props.touch;
     const isTouching = this.isTouching();
     const rootProps = {
@@ -226,15 +227,15 @@ class Sidebar extends React.Component {
     // sidebarStyle right/left
     if (this.props.pullRight) {
       sidebarStyle.right = 0;
-      sidebarStyle.transform = 'translateX(100%)';
-      sidebarStyle.WebkitTransform = 'translateX(100%)';
+      sidebarStyle.transform = `translateX(${translate.max}%)`;
+      sidebarStyle.WebkitTransform = `translateX(${translate.max}%)`;
       if (this.props.shadow) {
         sidebarStyle.boxShadow = '-2px 2px 4px rgba(0, 0, 0, 0.15)';
       }
     } else {
       sidebarStyle.left = 0;
-      sidebarStyle.transform = 'translateX(-100%)';
-      sidebarStyle.WebkitTransform = 'translateX(-100%)';
+      sidebarStyle.transform = `translateX(-${translate.max}%)`;
+      sidebarStyle.WebkitTransform = `translateX(-${translate.max}%)`;
       if (this.props.shadow) {
         sidebarStyle.boxShadow = '2px 2px 4px rgba(0, 0, 0, 0.15)';
       }
