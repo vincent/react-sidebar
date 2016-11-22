@@ -261,6 +261,7 @@ var Sidebar = function (_React$Component) {
       var sidebarStyle = _extends({}, defaultStyles.sidebar, this.props.styles.sidebar);
       var contentStyle = _extends({}, defaultStyles.content, this.props.styles.content);
       var overlayStyle = _extends({}, defaultStyles.overlay, this.props.styles.overlay);
+      var translate    = { min: this.props.minTranslate || 0, max: this.props.maxTranslate || 100 };
       var useTouch = this.state.dragSupported && this.props.touch;
       var isTouching = this.isTouching();
       var rootProps = {
@@ -279,8 +280,8 @@ var Sidebar = function (_React$Component) {
         }
       } else {
         sidebarStyle.left = 0;
-        sidebarStyle.transform = 'translateX(-100%)';
-        sidebarStyle.WebkitTransform = 'translateX(-100%)';
+        sidebarStyle.transform = 'translateX(-' + translate.max + '%)';
+        sidebarStyle.WebkitTransform = 'translateX(-' + translate.max + '%)';
         if (this.props.shadow) {
           sidebarStyle.boxShadow = '2px 2px 4px rgba(0, 0, 0, 0.15)';
         }
